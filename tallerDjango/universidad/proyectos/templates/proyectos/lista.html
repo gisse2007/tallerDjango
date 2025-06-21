@@ -1,0 +1,34 @@
+{% extends 'base.html' %} <!-- Extiende la plantilla base.html -->
+
+{% block contenido %} <!-- Inicia el bloque de contenido -->
+
+    <h2>Lista de proyectos</h2> <!-- Título de la página -->
+
+    <a href="{% url 'agregar_proyectos' %}" class="btn btn-success mb-3">Agregar proyectos</a> <!-- Botón para agregar un nuevo producto -->
+
+    <table class="table table-bordered"> <!-- Inicia la tabla con clases de Bootstrap -->
+        <tr> <!-- Fila de encabezado de la tabla -->
+            <th>idProyecto</th> <!-- Encabezado: Nombre -->
+            <th>NomProyecto</th> <!-- Encabezado: Descripción -->
+            <th>Tiempo</th> <!-- Encabezado: Precio -->
+            <th>FechaInicio</th> <!-- Encabezado: Acciones -->
+             <th>FechaFin</th> <!-- Encabezado: Acciones -->
+        </tr>
+
+        {% for proyectos in proyectos %} <!-- Itera sobre la lista de productos -->
+            <tr> <!-- Fila para cada producto -->
+                <td>{{ proyecto.idproyecto }}</td> 
+                <td>{{ proyecto.nomproyecto }}</td> <!-- Muestra el nombre del producto -->
+                <td>{{ proyecto.tiempo }}</td> <!-- Muestra la descripción del producto -->
+                <td>{{ proyecto.fechainicio }}</td> <!-- Muestra el precio del producto -->
+                <td>{{ proyecto.fechafin}}</td> 
+                <td> <!-- Columna de acciones -->
+                    <a href="{% url 'editar_proyectos' editar_proyectos.id %}" class="btn btn-warning btn-sm">Editar</a> <!-- Botón para editar -->
+                    <a href="{% url 'eliminar_editar_proyectos' editar_proyectos.id %}" class="btn btn-danger btn-sm">Eliminar</a> <!-- Botón para eliminar -->
+                </td>
+            </tr>
+        {% endfor %} <!-- Fin del ciclo for -->
+
+    </table> <!-- Fin de la tabla -->
+
+{% endblock %} <!-- Fin del bloque de contenido -->
